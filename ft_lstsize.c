@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtolmaco <dtolmaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 18:51:09 by dtolmaco          #+#    #+#             */
-/*   Updated: 2023/11/16 14:33:29 by dtolmaco         ###   ########.fr       */
+/*   Created: 2023/11/16 10:38:53 by dtolmaco          #+#    #+#             */
+/*   Updated: 2023/11/16 13:17:37 by dtolmaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	size;
-	char	*new;
+	int	len;
 
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen((char *)s))
-		return (ft_strdup(""));
-	size = ft_strlen(start + (char *)s);
-	if (size < len)
-		len = size;
-	new = (char *)malloc(sizeof(char) * (len + 1));
-	ft_strlcpy(new, s + start, len + 1);
-	return (new);
+	len = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		len++;
+	}
+	return (len);
 }
 /*
 #include <stdio.h>
-int main()
+int main() 
 {
-	printf("%s\n",ft_substr("Red Hot Chili Peppers", 4, 12));
+    t_list *node1 = ft_lstnew("One");
+    t_list *node2 = ft_lstnew("Two");
+    t_list *node3 = ft_lstnew("Three");
+
+    node1->next = node2;
+    node2->next = node3;
+	printf("%d\n", ft_lstsize(node1));
 }*/

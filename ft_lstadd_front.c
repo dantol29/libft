@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtolmaco <dtolmaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 11:10:57 by dtolmaco          #+#    #+#             */
-/*   Updated: 2023/11/16 14:23:13 by dtolmaco         ###   ########.fr       */
+/*   Created: 2023/11/16 10:30:36 by dtolmaco          #+#    #+#             */
+/*   Updated: 2023/11/16 12:13:50 by dtolmaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *str1, const void *str2, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	const unsigned char	*s1;
-	const unsigned char	*s2;
-	size_t				i;
-
-	s1 = str1;
-	s2 = str2;
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 /*
 #include <stdio.h>
-int main()
+int main() 
 {
-    printf("%d", ft_memcmp("hella", "hellb", 4));
+    t_list *node1 = ft_lstnew("One");
+    t_list *node2 = ft_lstnew("Two");
+    t_list *node3 = ft_lstnew("Three");
+	t_list	*new = ft_lstnew("Four");
+
+    node1->next = node2;
+    node2->next = node3;
+	ft_lstadd_front(&node1, new);
+	while (node1)
+	{
+		printf("%s\n", (char *)node1->content);
+		node1 = node1->next;
+	}
 }*/

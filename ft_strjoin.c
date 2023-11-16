@@ -6,7 +6,7 @@
 /*   By: dtolmaco <dtolmaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:22:44 by dtolmaco          #+#    #+#             */
-/*   Updated: 2023/11/14 17:32:50 by dtolmaco         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:27:07 by dtolmaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	new[len1 + len2] = '\0';
 	return (new);
 }
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%s\n", ft_strjoin("Hello", "World!"));
+}*/

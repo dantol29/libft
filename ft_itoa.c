@@ -6,7 +6,7 @@
 /*   By: dtolmaco <dtolmaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:40:19 by dtolmaco          #+#    #+#             */
-/*   Updated: 2023/11/15 19:26:57 by dtolmaco         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:02:16 by dtolmaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static int	ft_get_size(int n)
 	return (size);
 }
 
-static void	ft_fill_res(int size, int offset, int n, char *res)
+static void	ft_fill_new(int size, int off, int n, char *new)
 {
-	while (size > offset)
+	while (size > off)
 	{
-		res[size - 1] = n % 10 + '0';
+		new[size - 1] = n % 10 + '0';
 		n = n / 10;
 		size--;
 	}
@@ -39,29 +39,39 @@ static void	ft_fill_res(int size, int offset, int n, char *res)
 
 char	*ft_itoa(int n)
 {
-	int		offset;
+	int		off;
 	int		size;
-	char	*res;
+	char	*new;
 
-	offset = 0;
+	off = 0;
 	size = ft_get_size(n);
-	res = (char *)malloc(sizeof(char) * size + 1);
-	if (!res)
-		return (0);
+	new = (char *)malloc(sizeof(char) * size + 1);
+	if (new == NULL)
+		return (NULL);
 	if (n == -2147483648)
 	{
-		res[0] = '-';
-		res[1] = '2';
+		new[0] = '-';
+		new[1] = '2';
 		n = 147483648;
-		offset = 2;
+		off = 2;
 	}
 	if (n < 0)
 	{
-		res[0] = '-';
-		offset = 1;
+		new[0] = '-';
+		off = 1;
 		n = -n;
 	}
-	ft_fill_res(size, offset, n, res);
-	res[size] = '\0';
-	return (res);
+	ft_fill_new(size, off, n, new);
+	new[size] = '\0';
+	return (new);
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	printf("%s\n", ft_itoa(12345));
+	printf("%s\n", ft_itoa(-12345));
+	printf("%s\n", ft_itoa(0));
+	printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(2147483647));
+}*/

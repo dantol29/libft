@@ -6,7 +6,7 @@
 /*   By: dtolmaco <dtolmaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:48:22 by dtolmaco          #+#    #+#             */
-/*   Updated: 2023/11/15 17:19:02 by dtolmaco         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:41:29 by dtolmaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed = ft_substr(s1, start, end - start + 1);
 	return (trimmed);
 }
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%s")	
+}*/

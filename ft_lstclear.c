@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtolmaco <dtolmaco@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 11:10:57 by dtolmaco          #+#    #+#             */
-/*   Updated: 2023/11/16 14:23:13 by dtolmaco         ###   ########.fr       */
+/*   Created: 2023/11/16 11:08:48 by dtolmaco          #+#    #+#             */
+/*   Updated: 2023/11/16 12:30:19 by dtolmaco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *str1, const void *str2, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	const unsigned char	*s1;
-	const unsigned char	*s2;
-	size_t				i;
+	t_list	*next_node;
+	t_list	*current;
 
-	s1 = str1;
-	s2 = str2;
-	i = 0;
-	while (i < n)
+	if (lst == NULL || del == NULL)
+		return ;
+	current = *lst;
+	while (current)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
+		next_node = current->next;
+		ft_lstdelone(current, del);
+		current = next_node;
 	}
-	return (0);
+	*lst = NULL;
 }
-/*
-#include <stdio.h>
-int main()
-{
-    printf("%d", ft_memcmp("hella", "hellb", 4));
-}*/
